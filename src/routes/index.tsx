@@ -1,5 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { ArrowUpRight, ArrowRight, ArrowDown, Leaf, GraduationCap, Monitor, PenLine, Search, BookOpen, Sparkles, ChartNoAxesCombined, MessageCircle, FileText, Puzzle, ListChecks, Keyboard, Folder, Palette, Code, Phone, Mail, Menu, X, MapPin, Sprout, Lightbulb, Globe, Wrench } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { portfolioContacts } from "@/lib/portfolio-contact";
+import workspaceImage from "@/assets/research-workspace.jpg";
 import "../portfolio.css";
 
 /*
@@ -173,12 +178,22 @@ const learning = [
   { icon: "🧰", name: "Digital Tools", status: "Exploring", level: 1 },
 ];
 
-/* Replace these placeholders with your real details. */
-const contacts = [
-  { icon: "✉️", label: "Email", value: "your-email@example.com", href: "mailto:your-email@example.com" },
-  { icon: "in", label: "LinkedIn", value: "linkedin.com/in/yourusername", href: "#contact" },
-  { icon: "⌘", label: "GitHub", value: "github.com/yourusername", href: "#contact" },
-];
+const contacts = portfolioContacts;
+
+const iconMap = {
+  "🎓": GraduationCap, "💻": Monitor, "✍️": PenLine, "🌱": Sprout,
+  "🔍": Search, "📚": BookOpen, "🚀": ArrowUpRight, "</>": Code,
+  "🎨": Palette, "▥": Monitor, "📊": ChartNoAxesCombined, "⌨️": Keyboard,
+  "🗂️": Folder, "✨": Sparkles, "📝": FileText, "🖋️": PenLine,
+  "📄": FileText, "🤝": MessageCircle, "💬": MessageCircle, "🧩": Puzzle,
+  "📋": ListChecks, "👧🏾": GraduationCap, "📖": BookOpen, "💡": Lightbulb,
+  "🌿": Leaf, "🌐": Globe, "🧰": Wrench, "🍎": BookOpen, "✉️": Mail, phone: Phone,
+};
+
+function IconMark({ symbol }: { symbol: string }) {
+  const Icon = iconMap[symbol as keyof typeof iconMap] ?? Leaf;
+  return <Icon size={23} strokeWidth={1.6} aria-hidden="true" />;
+}
 
 /* ---------- PAGE ---------- */
 
@@ -194,6 +209,7 @@ function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string
 
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
 
   return (
     <div className="site">
@@ -201,23 +217,21 @@ function Portfolio() {
       <header className="navbar">
         <div className="container nav-inner">
           <a href="#home" className="logo">
-            Sophia<span>.</span>
+            <Leaf size={25} strokeWidth={1.6} /> Sophia<span>.</span>
           </a>
-          <button
+          <Button variant="ghost" size="icon"
             className="menu-btn"
-            aria-label="Open menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+            {menuOpen ? <X /> : <Menu />}
+          </Button>
           <nav className={menuOpen ? "nav-links open" : "nav-links"}>
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+              <Button asChild variant="ghost" key={link.href}><a href={link.href} onClick={() => setMenuOpen(false)}>
                 {link.label}
-              </a>
+              </a></Button>
             ))}
           </nav>
         </div>
@@ -225,13 +239,12 @@ function Portfolio() {
 
       {/* HERO */}
       <section id="home" className="hero">
-        <div className="blob blob-1"></div>
-        <div className="blob blob-2"></div>
+        <img className="hero-background" src={workspaceImage} alt="A notebook and leafy vegetables on a research workspace" width={1600} height={1024} fetchPriority="high" />
         <div className="container hero-inner">
           <div className="hero-text">
-            <span className="pill">🌱 Curious mind. Growing skill set.</span>
+            <span className="pill"><span className="status-dot" /> Curious mind. Growing skill set.</span>
             <h1>
-              Hello, I'm <em>Sophia</em>
+              Hello, I'm<br /><em>Sophia.</em>
             </h1>
             <p className="hero-role">Researcher | Writer | Aspiring Digital Professional</p>
             <p className="hero-intro">
@@ -239,30 +252,17 @@ function Portfolio() {
               writing, research, web development, and artificial intelligence.
             </p>
             <div className="btn-row">
-              <a href="#projects" className="btn btn-primary">View My Work →</a>
-              <a href="#contact" className="btn btn-outline">Let's Connect</a>
+              <Button asChild className="btn btn-primary"><a href="#projects">View My Work <ArrowUpRight /></a></Button>
+              <Button asChild variant="outline" className="btn btn-outline"><a href="#contact">Let's Connect <ArrowRight /></a></Button>
             </div>
-            <p className="hero-note">📍 Based in Nigeria · Open to learning & opportunities</p>
+            <p className="hero-note"><MapPin size={15} /> Based in Nigeria · Open to learning & opportunities</p>
           </div>
 
-          <div className="hero-photo">
-            <div className="ring"></div>
-            <div className="dots"></div>
-            {/* TO ADD YOUR PHOTO: save it as public/images/profile/sophia.jpg,
-                then replace the <div className="photo-placeholder"> below with:
-                <img src="/images/profile/sophia.jpg" alt="Sophia" className="photo" /> */}
-            <div className="photo-frame">
-              <div className="photo-placeholder">
-                <span>📷</span>
-                <p>Your photo here</p>
-                <small>public/images/profile/</small>
-              </div>
-            </div>
-            <div className="float-badge badge-top">🎓 Agric. Economics Graduate</div>
-            <div className="float-badge badge-bottom">✍️ Researcher & Writer</div>
-          </div>
         </div>
+        <div className="container hero-bottom"><span>ROOTED IN RESEARCH. GROWING IN TECH.</span><a href="#about" aria-label="Discover more about Sophia"><ArrowDown size={22} /></a></div>
       </section>
+
+      <div className="discipline-strip"><div className="container"><span>Research <Sparkles /></span><span>Writing <Sparkles /></span><span>Data <Sparkles /></span><span>Technology <Sparkles /></span><span>Continuous growth <Leaf /></span></div></div>
 
       {/* ABOUT */}
       <section id="about" className="section">
@@ -291,7 +291,7 @@ function Portfolio() {
             <div className="about-cards">
               {aboutCards.map((c) => (
                 <div key={c.title} className="mini-card">
-                  <span className="icon-bubble">{c.icon}</span>
+                  <span className="icon-bubble"><IconMark symbol={c.icon} /></span>
                   <div>
                     <h3>{c.title}</h3>
                     <p>{c.text}</p>
@@ -310,7 +310,7 @@ function Portfolio() {
           <ol className="timeline">
             {journey.map((step, i) => (
               <li key={step.title} className="timeline-item">
-                <div className="timeline-dot">{step.icon}</div>
+                <div className="timeline-dot"><IconMark symbol={step.icon} /></div>
                 <div className="timeline-card">
                   <span className="step-num">0{i + 1}</span>
                   <h3>{step.title}</h3>
@@ -333,12 +333,12 @@ function Portfolio() {
           {skillGroups.map((group) => (
             <div key={group.title} className="skill-group">
               <h3 className="group-title">
-                <span>{group.icon}</span> {group.title}
+                <IconMark symbol={group.icon} /> {group.title}
               </h3>
               <div className="skill-list">
                 {group.skills.map((s) => (
                   <div key={s.name} className="skill-card">
-                    <span className="skill-icon">{s.icon}</span>
+                    <span className="skill-icon"><IconMark symbol={s.icon} /></span>
                     <h4>{s.name}</h4>
                     <p>{s.text}</p>
                   </div>
@@ -374,7 +374,7 @@ function Portfolio() {
                       <span key={s} className="chip">{s}</span>
                     ))}
                   </div>
-                  <a href="#contact" className="btn btn-small">View Project →</a>
+                  <Button variant="ghost" className="btn btn-small" onClick={() => setSelectedProject(p)}>Explore Project <ArrowUpRight /></Button>
                 </div>
               </article>
             ))}
@@ -388,7 +388,7 @@ function Portfolio() {
           <SectionTitle eyebrow="My foundation" title="Education" />
           <div className="edu-row">
             <div className="edu-card">
-              <div className="edu-icon">🎓</div>
+              <div className="edu-icon"><GraduationCap size={32} strokeWidth={1.5} /></div>
               <div>
                 <span className="status">Recently graduated</span>
                 <h3>University of Calabar</h3>
@@ -397,7 +397,7 @@ function Portfolio() {
               </div>
             </div>
             <div className="edu-card edu-soft">
-              <div className="edu-icon">📚</div>
+              <div className="edu-icon"><BookOpen size={32} strokeWidth={1.5} /></div>
               <div>
                 <h3>Continuous Learning</h3>
                 <p>
@@ -422,8 +422,8 @@ function Portfolio() {
                       <img src={c.image} alt={c.title} loading="lazy" />
                     ) : (
                       <div className="cert-placeholder">
-                        <span>{c.icon}</span>
-                        <small>Certificate image coming soon</small>
+                        <IconMark symbol={c.icon} />
+                        <small>Learning in progress</small>
                       </div>
                     )}
                   </div>
@@ -443,7 +443,7 @@ function Portfolio() {
           <div className="exp-row">
             <div className="exp-card">
               <div className="exp-head">
-                <span className="icon-bubble big">🍎</span>
+                <span className="icon-bubble big"><BookOpen size={28} strokeWidth={1.5} /></span>
                 <div>
                   <span className="project-tag">Teaching experience</span>
                   <h3>Teacher</h3>
@@ -453,7 +453,7 @@ function Portfolio() {
               <ul className="exp-list">
                 {responsibilities.map((r) => (
                   <li key={r.text}>
-                    <span>{r.icon}</span>
+                    <span><IconMark symbol={r.icon} /></span>
                     {r.text}
                   </li>
                 ))}
@@ -488,7 +488,7 @@ function Portfolio() {
           <div className="why-list">
             {whyCards.map((w) => (
               <div key={w.title} className="why-card">
-                <span className="why-icon">{w.icon}</span>
+                <span className="why-icon"><IconMark symbol={w.icon} /></span>
                 <h3>{w.title}</h3>
                 <p>{w.text}</p>
               </div>
@@ -505,7 +505,7 @@ function Portfolio() {
             {learning.map((l) => (
               <div key={l.name} className="learn-card">
                 <div className="learn-top">
-                  <span className="skill-icon">{l.icon}</span>
+                  <span className="skill-icon"><IconMark symbol={l.icon} /></span>
                   <span className="learn-status">{l.status}</span>
                 </div>
                 <h3>{l.name}</h3>
@@ -523,7 +523,6 @@ function Portfolio() {
 
       {/* CONTACT */}
       <section id="contact" className="section contact">
-        <div className="blob blob-3"></div>
         <div className="container contact-inner">
           <span className="eyebrow light">Let's connect</span>
           <h2>Let's Work Together</h2>
@@ -534,19 +533,29 @@ function Portfolio() {
           <div className="contact-list">
             {contacts.map((c) => (
               <a key={c.label} href={c.href} className="contact-card">
-                <span className="contact-icon">{c.icon}</span>
+                <span className="contact-icon"><IconMark symbol={c.icon} /></span>
                 <strong>{c.label}</strong>
                 <small>{c.value}</small>
               </a>
             ))}
           </div>
-          <p className="contact-note">Contact details are placeholders until updated.</p>
+          <p className="contact-note">Based in Nigeria. Ready for the next chapter.</p>
         </div>
       </section>
 
       <footer className="footer">
-        <p>© 2026 Sophia. All Rights Reserved. · Built with HTML & CSS.</p>
+        <div className="container footer-inner"><a href="#home" className="footer-brand">Sophia.</a><p>© 2026 Sophia. All Rights Reserved.</p><a href="#home">Back to top <ArrowUpRight size={16} /></a></div>
       </footer>
+      <Dialog open={selectedProject !== null} onOpenChange={(open) => { if (!open) setSelectedProject(null); }}>
+        <DialogContent className="project-dialog">
+          {selectedProject && <>
+            <img src={selectedProject.image} alt={selectedProject.title} width={1200} height={800} className="dialog-project-image" />
+            <DialogHeader><span className="project-tag">{selectedProject.tag}</span><DialogTitle>{selectedProject.title}</DialogTitle><DialogDescription>{selectedProject.text}</DialogDescription></DialogHeader>
+            <div className="chips">{selectedProject.skills.map((skill) => <span className="chip" key={skill}>{skill}</span>)}</div>
+            <Button asChild><a href="mailto:sophiechrisng@gmail.com">Ask me about this project <ArrowUpRight /></a></Button>
+          </>}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

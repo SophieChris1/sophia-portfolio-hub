@@ -62,6 +62,22 @@
 }
 
 :root {
+  --portfolio-forest: oklch(0.32 0.062 156);
+  --portfolio-forest-deep: oklch(0.23 0.035 157);
+  --portfolio-sage: oklch(0.78 0.056 139);
+  --portfolio-sage-light: oklch(0.95 0.016 133);
+  --portfolio-paper: oklch(0.987 0.006 95);
+  --portfolio-line: oklch(0.88 0.014 120);
+  --portfolio-coral: oklch(0.62 0.125 37);
+  --portfolio-peach: oklch(0.94 0.035 48);
+  --portfolio-ink: oklch(0.28 0.018 151);
+  --portfolio-ink-soft: oklch(0.48 0.022 149);
+  --portfolio-white: oklch(1 0 0);
+  --portfolio-lime: oklch(0.89 0.16 119);
+  --portfolio-shadow: 0 12px 30px -18px oklch(0.32 0.062 156 / 0.18);
+  --portfolio-shadow-hover: 0 20px 40px -20px oklch(0.32 0.062 156 / 0.27);
+  --portfolio-overlay: linear-gradient(90deg, oklch(0.987 0.006 95 / 0.97), oklch(0.987 0.006 95 / 0.78) 36%, oklch(0.987 0.006 95 / 0) 75%);
+  --portfolio-mobile-overlay: linear-gradient(90deg, oklch(0.987 0.006 95 / 0.97), oklch(0.987 0.006 95 / 0.88) 65%, oklch(0.987 0.006 95 / 0.55));
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
