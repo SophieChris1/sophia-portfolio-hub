@@ -303,10 +303,12 @@ section[id] { scroll-margin-top: 90px; }
 .github-card p { font-size: 14px; color: var(--portfolio-ink-soft); margin: 0; flex: 1; }
 .github-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .github-stars { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: var(--portfolio-ink-soft); }
-.github-empty { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; max-width: 520px; margin: 40px auto 0; }
-.github-empty h3 { font-size: 24px; margin: 0; }
-.github-empty p { margin: 0; color: inherit; opacity: 0.85; }
-.github-note { text-align: center; margin-top: 40px; opacity: 0.8; }
+.github-empty { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; max-width: 520px; margin: 40px auto 0; color: var(--portfolio-cream); }
+.github-empty h3 { font-size: 24px; margin: 0; color: var(--portfolio-cream); }
+.github-empty p { margin: 0; color: var(--portfolio-cream); opacity: 0.85; }
+.github-note { text-align: center; margin-top: 40px; color: var(--portfolio-cream); opacity: 0.8; }
+.github-section .site .btn-outline, .github-section .btn-outline { color: var(--portfolio-cream); border-color: var(--portfolio-cream); background: transparent; }
+.github-section .btn-outline:hover { background: var(--portfolio-cream); color: var(--portfolio-forest); }
 .github-more { display: flex; justify-content: center; margin-top: 32px; }
 @media (max-width: 900px) { .github-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .github-list { grid-template-columns: 1fr; } .github-card h3 { font-size: 17px; } }
