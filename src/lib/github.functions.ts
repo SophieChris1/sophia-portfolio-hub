@@ -28,8 +28,8 @@ export const getGithubRepos = createServerFn({ method: "GET" }).handler(
     const profileUrl = `https://github.com/${GITHUB_USERNAME}`;
     const fallback: GithubReposResult = { repos: [], profileUrl, error: null };
 
-    const lovableKey = process.env.LOVABLE_API_KEY;
-    const githubKey = process.env.GITHUB_API_KEY;
+    const lovableKey = process.env["LOVABLE_API_KEY"];
+    const githubKey = process.env["GITHUB_API_KEY"];
     if (!lovableKey || !githubKey) {
       return { ...fallback, error: "GitHub connection is not configured." };
     }
