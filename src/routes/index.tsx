@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowUpRight, ArrowRight, ArrowDown, Leaf, GraduationCap, Monitor, PenLine, Search, BookOpen, Sparkles, ChartNoAxesCombined, MessageCircle, FileText, Puzzle, ListChecks, Keyboard, Folder, Palette, Code, Phone, Mail, Menu, X, MapPin, Sprout, Lightbulb, Globe, Wrench } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { ArrowUpRight, ArrowRight, ArrowDown, Leaf, GraduationCap, Monitor, PenLine, Search, BookOpen, Sparkles, ChartNoAxesCombined, MessageCircle, FileText, Puzzle, ListChecks, Keyboard, Folder, Palette, Code, Phone, Mail, Menu, X, MapPin, Sprout, Lightbulb, Globe, Wrench, Github, Star } from "lucide-react";
+import { getGithubRepos } from "@/lib/github.functions";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { portfolioContacts } from "@/lib/portfolio-contact";
@@ -44,6 +46,7 @@ const navLinks = [
   { href: "#journey", label: "Journey" },
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
+  { href: "#github", label: "GitHub" },
   { href: "#education", label: "Education" },
   { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
@@ -196,6 +199,71 @@ function IconMark({ symbol }: { symbol: string }) {
 }
 
 /* ---------- PAGE ---------- */
+
+/* GitHub section: loads Sophia's public repositories from GitHub.
+   Until a repository is made public, it shows a friendly link to her profile. */
+function GithubSection() {
+  const { data, isPending } = useQuery({
+    queryKey: ["github-repos"],
+    queryFn: () => getGithubRepos(),
+    staleTime: 5 * 60 * 1000,
+  });
+
+  return (
+    <section id="github" className="section section-dark github-section">
+      <div className="container">
+        <SectionTitle
+          eyebrow="Code & experiments"
+          title="My GitHub"
+          text="Where I practice web development and share what I'm building."
+        />
+        {isPending ? (
+          <p className="github-note">Loading projects…</p>
+        ) : data && data.repos.length > 0 ? (
+          <div className="github-list">
+            {data.repos.map((repo) => (
+              <a key={repo.name} href={repo.url} target="_blank" rel="noreferrer" className="github-card">
+                <div className="github-card-top">
+                  <span className="icon-bubble"><Github size={20} strokeWidth={1.6} /></span>
+                  <ArrowUpRight size={18} className="github-arrow" />
+                </div>
+                <h3>{repo.name}</h3>
+                {repo.description && <p>{repo.description}</p>}
+                <div className="github-meta">
+                  {repo.language && <span className="chip">{repo.language}</span>}
+                  {repo.stars > 0 && <span className="github-stars"><Star size={13} /> {repo.stars}</span>}
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className="github-empty">
+            <span className="icon-bubble big"><Github size={28} strokeWidth={1.5} /></span>
+            <h3>Freshly started on GitHub</h3>
+            <p>
+              I've just set up my GitHub account and will be publishing my coding practice and
+              web development projects here as I build them.
+            </p>
+            <Button asChild variant="outline" className="btn btn-outline">
+              <a href={data?.profileUrl ?? "https://github.com/SophieChris1"} target="_blank" rel="noreferrer">
+                Follow my journey on GitHub <ArrowUpRight />
+              </a>
+            </Button>
+          </div>
+        )}
+        {data && data.repos.length > 0 && (
+          <div className="github-more">
+            <Button asChild variant="outline" className="btn btn-outline">
+              <a href={data.profileUrl} target="_blank" rel="noreferrer">
+                See all on GitHub <ArrowUpRight />
+              </a>
+            </Button>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
 
 function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
   return (
@@ -520,6 +588,9 @@ function Portfolio() {
           </div>
         </div>
       </section>
+
+      {/* GITHUB */}
+      <GithubSection />
 
       {/* CONTACT */}
       <section id="contact" className="section contact">
