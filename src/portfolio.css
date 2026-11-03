@@ -59,8 +59,11 @@ section[id] { scroll-margin-top: 90px; }
 .hero { position: relative; isolation: isolate; min-height: 630px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
 .hero-background { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: cover; object-position: center; z-index: -2; }
 .hero::before { content: ""; position: absolute; inset: 0; background: var(--portfolio-overlay); z-index: -1; }
-.hero-inner { padding-top: 64px; padding-bottom: 65px; }
+.hero-inner { padding-top: 64px; padding-bottom: 65px; display: flex; align-items: center; justify-content: space-between; gap: 60px; }
 .hero-text { max-width: 570px; display: flex; flex-direction: column; gap: 22px; animation: fadeUp .7s ease both; }
+/* Round, centered profile portrait */
+.hero-portrait { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.hero-portrait img { width: 340px; height: 340px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 5px solid var(--cream); box-shadow: var(--shadow-hover); }
 .pill { align-self: flex-start; display: flex; align-items: center; gap: 9px; color: var(--green); font-size: 12px; font-weight: 500; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
 .site .hero h1 { font-size: 78px; line-height: 1.03; }
@@ -212,6 +215,8 @@ section[id] { scroll-margin-top: 90px; }
   .site .nav-links a { justify-content: flex-start; height: 42px; font-size: 14px; }
   .site .nav-links a:last-child { margin: 8px 0 0; }
   .hero { min-height: 610px; }
+  .hero-inner { gap: 36px; }
+  .hero-portrait img { width: 260px; height: 260px; }
   .about-grid { gap: 40px; }
   .skill-group { grid-template-columns: 160px 1fr; gap: 25px; }
   .skill-list { grid-template-columns: repeat(3, 1fr); }
@@ -230,8 +235,12 @@ section[id] { scroll-margin-top: 90px; }
   .hero { min-height: 630px; justify-content: flex-start; }
   .hero-background { object-position: 62% center; }
   .hero::before { background: var(--portfolio-mobile-overlay); }
-  .hero-inner { padding-top: 50px; padding-bottom: 36px; }
-  .hero-text { gap: 20px; max-width: 100%; }
+  .hero-inner { padding-top: 50px; padding-bottom: 36px; flex-direction: column; align-items: center; text-align: center; gap: 34px; }
+  .hero-portrait { order: -1; }
+  .hero-portrait img { width: 220px; height: 220px; }
+  .hero-text { gap: 20px; max-width: 100%; align-items: center; }
+  .hero-text .btn-row { justify-content: center; }
+  .hero-note { justify-content: center; }
   .site .hero h1 { font-size: 62px; }
   .hero-role { max-width: 300px; font-size: 12px; }
   .hero-intro { font-size: 14px; max-width: 310px; }

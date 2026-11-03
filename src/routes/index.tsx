@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { portfolioContacts } from "@/lib/portfolio-contact";
 import workspaceImage from "@/assets/research-workspace.jpg";
+import sophieImage from "@/assets/sophie.jpg";
 import "../portfolio.css";
 
 /*
@@ -325,7 +326,9 @@ function Portfolio() {
             </div>
             <p className="hero-note"><MapPin size={15} /> Based in Nigeria · Open to learning & opportunities</p>
           </div>
-
+          <div className="hero-portrait">
+            <img src={sophieImage} alt="Portrait of Sophia" width={1086} height={1195} />
+          </div>
         </div>
         <div className="container hero-bottom"><span>ROOTED IN RESEARCH. GROWING IN TECH.</span><a href="#about" aria-label="Discover more about Sophia"><ArrowDown size={22} /></a></div>
       </section>
