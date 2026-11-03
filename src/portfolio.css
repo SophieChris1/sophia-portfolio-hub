@@ -59,8 +59,11 @@ section[id] { scroll-margin-top: 90px; }
 .hero { position: relative; isolation: isolate; min-height: 630px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
 .hero-background { position: absolute; inset: 0; height: 100%; width: 100%; object-fit: cover; object-position: center; z-index: -2; }
 .hero::before { content: ""; position: absolute; inset: 0; background: var(--portfolio-overlay); z-index: -1; }
-.hero-inner { padding-top: 64px; padding-bottom: 65px; }
+.hero-inner { padding-top: 64px; padding-bottom: 65px; display: flex; align-items: center; justify-content: space-between; gap: 60px; }
 .hero-text { max-width: 570px; display: flex; flex-direction: column; gap: 22px; animation: fadeUp .7s ease both; }
+/* Round, centered profile portrait */
+.hero-portrait { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.hero-portrait img { width: 340px; height: 340px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 5px solid var(--cream); box-shadow: var(--shadow-hover); }
 .pill { align-self: flex-start; display: flex; align-items: center; gap: 9px; color: var(--green); font-size: 12px; font-weight: 500; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
 .site .hero h1 { font-size: 78px; line-height: 1.03; }
