@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { SophiaAssistant } from "@/components/SophiaAssistant";
 import { aboutCards, journey, skillGroups, projects, courses, responsibilities, whyCards, learning } from "@/lib/portfolio-data";
 import { portfolioContacts } from "@/lib/portfolio-contact";
-import workspaceImage from "@/assets/research-workspace.jpg";
 import sophieImage from "@/assets/sophie.jpg";
 import "../portfolio.css";
 
@@ -180,7 +179,6 @@ function Portfolio() {
 
       {/* HERO */}
       <section id="home" className="hero">
-        <img className="hero-background" src={workspaceImage} alt="A notebook and leafy vegetables on a research workspace" width={1600} height={1024} fetchPriority="high" />
         <div className="container hero-inner">
           <div className="hero-text">
             <span className="pill"><span className="status-dot" /> Curious mind. Growing skill set.</span>
@@ -199,7 +197,7 @@ function Portfolio() {
             <p className="hero-note"><MapPin size={15} /> Based in Nigeria · Open to learning & opportunities</p>
           </div>
           <div className="hero-portrait">
-            <img src={sophieImage} alt="Portrait of Sophia" width={1086} height={1195} />
+            <img src={sophieImage} alt="Portrait of Sophia" width={1086} height={1195} fetchPriority="high" />
           </div>
         </div>
         <div className="container hero-bottom"><span>ROOTED IN RESEARCH. GROWING IN TECH.</span><a href="#about" aria-label="Discover more about Sophia"><ArrowDown size={22} /></a></div>

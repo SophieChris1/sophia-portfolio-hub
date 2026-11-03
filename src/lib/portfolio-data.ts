@@ -37,6 +37,7 @@ export const skillGroups = [
       { icon: "</>", name: "HTML", text: "Structuring clear, accessible web pages." },
       { icon: "🎨", name: "CSS", text: "Styling pages with colour, spacing, and type." },
       { icon: "▥", name: "CSS Flexbox", text: "Creating flexible, responsive layouts." },
+      { icon: "</>", name: "JavaScript", text: "Developing: learning interactive web behaviour." },
       { icon: "📊", name: "Data Analysis", text: "Exploring data and understanding patterns." },
       { icon: "⌨️", name: "Data Entry", text: "Recording and organizing information accurately." },
       { icon: "🗂️", name: "Microsoft Office", text: "Documents, spreadsheets, and slides." },
