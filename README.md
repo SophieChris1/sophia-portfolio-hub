@@ -6,7 +6,7 @@ Sophia Aniekwe's portfolio presents her education, research, teaching experience
 
 ## Technologies and development
 
-The page uses HTML elements, CSS, Flexbox and JavaScript. The existing Lovable application also uses React, TypeScript, TanStack Start and Vite for rendering, routing and secure server execution. It is not a standalone static HTML site: retaining these required files keeps the existing website working and protects AI credentials.
+The page uses HTML elements for structure, CSS for presentation, Flexbox for flexible layouts and JavaScript for interaction. `src/script.js` reads streamed AI answers; the page's JavaScript also handles navigation and the chat controls. JavaScript is listed in Sophia's skills only as developing, not as completed training. The existing Lovable application also uses React, TypeScript, TanStack Start and Vite for rendering, routing and secure server execution. It is not a standalone static HTML site: retaining these required files keeps the existing website working and protects AI credentials.
 
 The portfolio was developed in Lovable, with iterative visual refinement, supplied personal information, a real profile photograph, illustrative project images, accessible controls and mobile/desktop testing. Courses are presented as completed training areas, not as verified certificates. Illustrative project pictures are not research evidence.
 
@@ -36,7 +36,7 @@ sophia-portfolio-hub/
 │   ├── script.js                   # JavaScript AI interaction
 │   ├── script.d.ts                 # Types for the JavaScript module
 │   ├── assets/sophie.jpg           # Supplied profile photo
-│   ├── assets/research-workspace.jpg
+│   ├── assets/research-workspace.jpg # Retained, no longer used on the homepage
 │   ├── components/SophiaAssistant.tsx
 │   ├── components/ai-elements/     # Accessible chat primitives
 │   ├── lib/portfolio-data.ts       # Shared portfolio content
@@ -53,7 +53,6 @@ The requested simple structure is represented within the existing application ra
 ## Contact
 
 - Email: [sophiaaniekwe@gmail.com](mailto:sophiaaniekwe@gmail.com)
-- Phone: 07053084945
 - GitHub: https://github.com/SophieChris1/sophia-portfolio-hub
 - LinkedIn: https://www.linkedin.com/in/sophia-aniekwe-238391385
 
@@ -67,6 +66,8 @@ bun run dev -- --port 8080
 ```
 
 Open http://localhost:8080. The public portfolio can render without AI credentials. Outside Lovable, configure the required AI Gateway server credential in your local secret environment (never commit it); the live assistant requires server access to Lovable AI. Keep `.env` and credentials out of GitHub.
+
+On Lovable, the assistant uses the configured Lovable AI connection; Sophia does not need to supply a private API key. AI credits must remain available. The homepage uses her supplied photograph without face edits, and no phone contact is displayed. Preview changes reach the public website only after publishing.
 
 ```sh
 bun run test
