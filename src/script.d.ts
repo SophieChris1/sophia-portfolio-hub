@@ -1,0 +1,1 @@
+export function streamPortfolioAnswer(request: (options: { data: { messages: { role: "user" | "assistant"; content: string }[] } }) => Promise<Response>, messages: { role: "user" | "assistant"; content: string }[], onText: (text: string) => void): Promise<void>;
