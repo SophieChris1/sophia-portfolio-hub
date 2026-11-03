@@ -4,7 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowUpRight, ArrowRight, ArrowDown, Leaf, GraduationCap, Monitor, PenLine, Search, BookOpen, Sparkles, ChartNoAxesCombined, MessageCircle, FileText, Puzzle, ListChecks, Keyboard, Folder, Palette, Code, Phone, Mail, Menu, X, MapPin, Sprout, Lightbulb, Globe, Wrench, Github, Star } from "lucide-react";
 import { getGithubRepos } from "@/lib/github.functions";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { SophiaAssistant } from "@/components/SophiaAssistant";
+import { aboutCards, journey, skillGroups, projects, courses, responsibilities, whyCards, learning } from "@/lib/portfolio-data";
 import { portfolioContacts } from "@/lib/portfolio-contact";
 import workspaceImage from "@/assets/research-workspace.jpg";
 import sophieImage from "@/assets/sophie.jpg";
@@ -50,136 +51,8 @@ const navLinks = [
   { href: "#github", label: "GitHub" },
   { href: "#education", label: "Education" },
   { href: "#experience", label: "Experience" },
+  { href: "#ask-sophia", label: "Ask Sophia" },
   { href: "#contact", label: "Contact" },
-];
-
-const aboutCards = [
-  { icon: "🎓", title: "Agricultural Economics Graduate", text: "University of Calabar, Nigeria" },
-  { icon: "💻", title: "Aspiring Digital Professional", text: "Web, data & AI tools" },
-  { icon: "✍️", title: "Researcher & Writer", text: "Clear thinking. Meaningful communication." },
-  { icon: "🌱", title: "Lifelong Learner", text: "Exploring technology, digital skills & AI" },
-];
-
-const journey = [
-  {
-    icon: "🎓",
-    title: "University Education",
-    text: "Bachelor of Agriculture (Agricultural Economics), University of Calabar.",
-  },
-  {
-    icon: "🔍",
-    title: "Research",
-    text: "Undergraduate research on resource productivity in urban leafy vegetable production among women farmers in Calabar South, Cross River State, Nigeria.",
-  },
-  { icon: "📚", title: "Teaching", text: "Teaching experience at Embodiment of Love Academy." },
-  {
-    icon: "💻",
-    title: "Digital Skills",
-    text: "Developing skills in data entry, data analysis, HTML, CSS, Flexbox, AI tools and technical writing.",
-  },
-  {
-    icon: "🚀",
-    title: "Future",
-    text: "Building a professional career combining research, communication, technology and digital skills.",
-  },
-];
-
-const skillGroups = [
-  {
-    title: "Technical Skills",
-    icon: "💻",
-    skills: [
-      { icon: "</>", name: "HTML", text: "Structuring clear, accessible web pages." },
-      { icon: "🎨", name: "CSS", text: "Styling pages with colour, spacing, and type." },
-      { icon: "▥", name: "CSS Flexbox", text: "Creating flexible, responsive layouts." },
-      { icon: "📊", name: "Data Analysis", text: "Exploring data and understanding patterns." },
-      { icon: "⌨️", name: "Data Entry", text: "Recording and organizing information accurately." },
-      { icon: "🗂️", name: "Microsoft Office", text: "Documents, spreadsheets, and slides." },
-      { icon: "✨", name: "AI Tools", text: "Exploring AI to support learning and tasks." },
-    ],
-  },
-  {
-    title: "Research & Writing",
-    icon: "✍️",
-    skills: [
-      { icon: "🔍", name: "Research", text: "Finding, checking, and organizing information." },
-      { icon: "📝", name: "Technical Writing", text: "Explaining processes and ideas clearly." },
-      { icon: "🖋️", name: "Content Writing", text: "Creating clear and engaging content." },
-      { icon: "📄", name: "Report Writing", text: "Presenting findings in a structured way." },
-    ],
-  },
-  {
-    title: "Professional Skills",
-    icon: "🤝",
-    skills: [
-      { icon: "💬", name: "Communication", text: "Sharing ideas clearly and listening thoughtfully." },
-      { icon: "🧩", name: "Problem Solving", text: "Thinking through challenges to find solutions." },
-      { icon: "📋", name: "Organization", text: "Keeping work structured and on track." },
-      { icon: "🌱", name: "Continuous Learning", text: "Always growing new skills." },
-    ],
-  },
-];
-
-const projects = [
-  {
-    image: "/images/projects/research.jpg",
-    tag: "Academic research",
-    title: "Undergraduate Research Project",
-    text: "Research project on resource productivity in urban leafy vegetable production among women farmers in Calabar South, Cross River State, Nigeria.",
-    skills: ["Research", "Data collection", "Data analysis", "Agricultural economics", "Report writing"],
-  },
-  {
-    image: "/images/projects/portfolio.jpg",
-    tag: "Web development",
-    title: "Personal Portfolio Website",
-    text: "A responsive personal portfolio website created to demonstrate my understanding of HTML, CSS, and Flexbox.",
-    skills: ["HTML", "CSS", "Flexbox", "Responsive web design"],
-  },
-  {
-    image: "/images/projects/data.jpg",
-    tag: "Data & insights",
-    title: "Data Analysis Practice",
-    text: "Beginner data analysis exercises involving data organization, interpretation, basic statistical analysis, and presentation of findings.",
-    skills: ["Data entry", "Data analysis", "Data interpretation", "Presentation"],
-  },
-  {
-    image: "/images/projects/writing.jpg",
-    tag: "Writing & communication",
-    title: "Digital Writing & Research",
-    text: "Writing and research activities focused on presenting information clearly, conducting research, and communicating ideas effectively.",
-    skills: ["Research", "Writing", "Communication", "Information organization"],
-  },
-];
-
-/* To add a certificate image: put it in public/images/certificates/
-   and set image: "/images/certificates/your-file.jpg" below. */
-const certificates = [
-  { icon: "⌨️", title: "Data Entry Training", image: "" },
-  { icon: "📊", title: "Data Analysis for Beginners", image: "" },
-  { icon: "✨", title: "Artificial Intelligence / AI", image: "" },
-  { icon: "</>", title: "Web Development / HTML & CSS", image: "" },
-];
-
-const responsibilities = [
-  { icon: "👧🏾", text: "Worked with young learners." },
-  { icon: "💬", text: "Developed communication and classroom management skills." },
-  { icon: "📖", text: "Prepared and presented lessons in a clear and understandable way." },
-];
-
-const whyCards = [
-  { icon: "🔍", title: "Research & Analysis", text: "I can research information, organize data, and communicate findings clearly." },
-  { icon: "✍️", title: "Writing & Communication", text: "I enjoy turning information and ideas into clear, organized written content." },
-  { icon: "💡", title: "Digital Learning", text: "I am continuously developing practical digital and technology skills." },
-  { icon: "🌿", title: "Reliability & Growth", text: "I am committed to learning, improving, and delivering quality work." },
-];
-
-const learning = [
-  { icon: "</>", name: "HTML & CSS", status: "Practicing", level: 3 },
-  { icon: "🌐", name: "Web Development", status: "Learning", level: 2 },
-  { icon: "📊", name: "Data Analysis", status: "Developing", level: 3 },
-  { icon: "✨", name: "Artificial Intelligence", status: "Exploring", level: 1 },
-  { icon: "📝", name: "Technical Writing", status: "Developing", level: 3 },
-  { icon: "🧰", name: "Digital Tools", status: "Exploring", level: 1 },
 ];
 
 const contacts = portfolioContacts;
@@ -191,7 +64,7 @@ const iconMap = {
   "🗂️": Folder, "✨": Sparkles, "📝": FileText, "🖋️": PenLine,
   "📄": FileText, "🤝": MessageCircle, "💬": MessageCircle, "🧩": Puzzle,
   "📋": ListChecks, "👧🏾": GraduationCap, "📖": BookOpen, "💡": Lightbulb,
-  "🌿": Leaf, "🌐": Globe, "🧰": Wrench, "🍎": BookOpen, "✉️": Mail, phone: Phone,
+  "🌿": Leaf, "🌐": Globe, "🧰": Wrench, "🍎": BookOpen, "✉️": Mail, phone: Phone, github: Github, linkedin: Globe,
 };
 
 function IconMark({ symbol }: { symbol: string }) {
@@ -246,7 +119,7 @@ function GithubSection() {
               web development projects here as I build them.
             </p>
             <Button asChild variant="outline" className="btn btn-outline">
-              <a href={data?.profileUrl ?? "https://github.com/SophieChris1"} target="_blank" rel="noreferrer">
+              <a href={"https://github.com/SophieChris1/sophia-portfolio-hub"} target="_blank" rel="noreferrer">
                 Follow my journey on GitHub <ArrowUpRight />
               </a>
             </Button>
@@ -255,7 +128,7 @@ function GithubSection() {
         {data && data.repos.length > 0 && (
           <div className="github-more">
             <Button asChild variant="outline" className="btn btn-outline">
-              <a href={data.profileUrl} target="_blank" rel="noreferrer">
+              <a href="https://github.com/SophieChris1/sophia-portfolio-hub" target="_blank" rel="noreferrer">
                 See all on GitHub <ArrowUpRight />
               </a>
             </Button>
@@ -278,7 +151,6 @@ function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string
 
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
 
   return (
     <div className="site">
@@ -434,7 +306,6 @@ function Portfolio() {
                 <div className="project-img">
                   {/* Replace the image file in public/images/projects/ to change this */}
                   <img src={p.image} alt={p.title} loading="lazy" width={1200} height={800} />
-                  <span className="img-note">Illustrative image</span>
                 </div>
                 <div className="project-body">
                   <span className="project-tag">{p.tag}</span>
@@ -445,7 +316,6 @@ function Portfolio() {
                       <span key={s} className="chip">{s}</span>
                     ))}
                   </div>
-                  <Button variant="ghost" className="btn btn-small" onClick={() => setSelectedProject(p)}>Explore Project <ArrowUpRight /></Button>
                 </div>
               </article>
             ))}
@@ -472,7 +342,7 @@ function Portfolio() {
               <div>
                 <h3>Continuous Learning</h3>
                 <p>
-                  Building on my academic foundation through digital courses, certificates, and
+                  Building on my academic foundation through digital courses and
                   practical training.
                 </p>
               </div>
@@ -482,24 +352,20 @@ function Portfolio() {
           <div className="sub-section">
             <SectionTitle
               eyebrow="Building my knowledge"
-              title="Certifications & Training"
-              text="Learning interests — certificates will be added as earned."
+              title="Courses & Training"
+              text="Completed courses and practical training in digital skills."
             />
             <div className="cert-list">
-              {certificates.map((c) => (
+              {courses.map((c) => (
                 <div key={c.title} className="cert-card">
                   <div className="cert-img">
-                    {c.image ? (
-                      <img src={c.image} alt={c.title} loading="lazy" />
-                    ) : (
-                      <div className="cert-placeholder">
-                        <IconMark symbol={c.icon} />
-                        <small>Learning in progress</small>
-                      </div>
-                    )}
+                    <div className="cert-placeholder">
+                      <IconMark symbol={c.icon} />
+                      <small>Completed training</small>
+                    </div>
                   </div>
                   <h3>{c.title}</h3>
-                  <p>Learning area · Certificate to be added</p>
+                  <p>Completed course / training</p>
                 </div>
               ))}
             </div>
@@ -595,6 +461,8 @@ function Portfolio() {
       {/* GITHUB */}
       <GithubSection />
 
+      <SophiaAssistant />
+
       {/* CONTACT */}
       <section id="contact" className="section contact">
         <div className="container contact-inner">
@@ -606,7 +474,7 @@ function Portfolio() {
           </p>
           <div className="contact-list">
             {contacts.map((c) => (
-              <a key={c.label} href={c.href} className="contact-card">
+              <a key={c.label} href={c.href} target={c.href.startsWith("https:") ? "_blank" : undefined} rel={c.href.startsWith("https:") ? "noopener noreferrer" : undefined} className="contact-card">
                 <span className="contact-icon"><IconMark symbol={c.icon} /></span>
                 <strong>{c.label}</strong>
                 <small>{c.value}</small>
@@ -620,16 +488,7 @@ function Portfolio() {
       <footer className="footer">
         <div className="container footer-inner"><a href="#home" className="footer-brand">Sophia.</a><p>© 2026 Sophia. All Rights Reserved.</p><a href="#home">Back to top <ArrowUpRight size={16} /></a></div>
       </footer>
-      <Dialog open={selectedProject !== null} onOpenChange={(open) => { if (!open) setSelectedProject(null); }}>
-        <DialogContent className="project-dialog">
-          {selectedProject && <>
-            <img src={selectedProject.image} alt={selectedProject.title} width={1200} height={800} className="dialog-project-image" />
-            <DialogHeader><span className="project-tag">{selectedProject.tag}</span><DialogTitle>{selectedProject.title}</DialogTitle><DialogDescription>{selectedProject.text}</DialogDescription></DialogHeader>
-            <div className="chips">{selectedProject.skills.map((skill) => <span className="chip" key={skill}>{skill}</span>)}</div>
-            <Button asChild><a href="mailto:sophiechrisng@gmail.com">Ask me about this project <ArrowUpRight /></a></Button>
-          </>}
-        </DialogContent>
-      </Dialog>
+
     </div>
   );
 }
