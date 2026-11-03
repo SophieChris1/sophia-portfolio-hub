@@ -2,7 +2,14 @@
 - [x] Refresh presentation while preserving existing information.
 - [x] Add supplied email and phone links.
 - [x] Verify desktop and mobile navigation and layout.
-- [ ] Edit attached portrait if available (blocked: no uploaded image is present).
+- [x] Add supplied profile portrait.
+
+# Portfolio content and AI update
+- [ ] Correct all contact destinations and tests.
+- [ ] Update courses and remove project actions without changing imagery.
+- [ ] Add grounded, secure AI portfolio assistant with script.js interaction.
+- [ ] Update README and document the maintained source structure.
+- [ ] Verify AI, links, images and desktop/mobile layouts.
 
 # Agent integrations
 - [x] Enable Lovable Cloud and managed OAuth with email, Google and Lovable sign-in methods.
