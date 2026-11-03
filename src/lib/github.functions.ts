@@ -25,7 +25,7 @@ const GITHUB_USERNAME = "SophieChris1";
 
 export const getGithubRepos = createServerFn({ method: "GET" }).handler(
   async (): Promise<GithubReposResult> => {
-    const profileUrl = `https://github.com/${GITHUB_USERNAME}`;
+    const profileUrl = `https://github.com/${GITHUB_USERNAME}/sophia-portfolio-hub`;
     const fallback: GithubReposResult = { repos: [], profileUrl, error: null };
 
     const lovableKey = process.env["LOVABLE_API_KEY"];

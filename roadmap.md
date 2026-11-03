@@ -5,11 +5,11 @@
 - [x] Add supplied profile portrait.
 
 # Portfolio content and AI update
-- [ ] Correct all contact destinations and tests.
-- [ ] Update courses and remove project actions without changing imagery.
-- [ ] Add grounded, secure AI portfolio assistant with script.js interaction.
-- [ ] Update README and document the maintained source structure.
-- [ ] Verify AI, links, images and desktop/mobile layouts.
+- [x] Correct all contact destinations and tests.
+- [x] Update courses and remove project actions without changing imagery.
+- [x] Add grounded, secure AI portfolio assistant with script.js interaction.
+- [x] Update README and document the maintained source structure.
+- [x] Verify AI, links, images and desktop/mobile layouts.
 
 # Agent integrations
 - [x] Enable Lovable Cloud and managed OAuth with email, Google and Lovable sign-in methods.
